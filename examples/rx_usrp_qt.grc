@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<?grc format='1' created='3.7.13'?>
+<?grc format='1' created='3.7.11'?>
 <flow_graph>
   <timestamp>Sun Jul 17 14:59:29 2016</timestamp>
   <block>
@@ -73,20 +73,12 @@
       <value>True</value>
     </param>
     <param>
-      <key>sizing_mode</key>
-      <value>fixed</value>
-    </param>
-    <param>
       <key>thread_safe_setters</key>
       <value></value>
     </param>
     <param>
       <key>title</key>
       <value></value>
-    </param>
-    <param>
-      <key>placement</key>
-      <value>(0,0)</value>
     </param>
   </block>
   <block>
@@ -97,7 +89,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1*250e3+0*500e3</value>
+      <value>125e3</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -105,7 +97,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(16, 180)</value>
+      <value>(8, 308)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -264,7 +256,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>-250e3</value>
+      <value>0</value>
     </param>
     <param>
       <key>_enabled</key>
@@ -272,7 +264,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(8, 268)</value>
+      <value>(8, 180)</value>
     </param>
     <param>
       <key>gui_hint</key>
@@ -406,7 +398,7 @@
     </param>
     <param>
       <key>value</key>
-      <value>1e6</value>
+      <value>250e3</value>
     </param>
   </block>
   <block>
@@ -859,7 +851,7 @@
     </param>
     <param>
       <key>_coordinate</key>
-      <value>(680, 220)</value>
+      <value>(696, 228)</value>
     </param>
     <param>
       <key>_rotation</key>
@@ -2173,7 +2165,7 @@
     </param>
     <param>
       <key>dev_addr</key>
-      <value>""</value>
+      <value>"EDR10Z3B1"</value>
     </param>
     <param>
       <key>dev_args</key>
