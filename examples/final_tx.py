@@ -36,7 +36,17 @@ import sys
 import time
 import socket
 from gnuradio import qtgui
+def server():
+    # Here we define the UDP IP address as well as the port number that we have
+    # already defined in the client python script.
+    UDP_IP_ADDRESS = "127.0.0.1"
+    UDP_PORT_IN = 52001
+    serverIn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    serverIn.connect(('localhost', UDP_PORT_IN))
 
+    return serverIn
+    
+serverIn = server()
 global messageBox
 global button
 class top_block(gr.top_block, Qt.QWidget):
@@ -242,21 +252,6 @@ def main(top_block_cls=top_block, options=None):
         style = gr.prefs().get_string('qtgui', 'style', 'raster')
         Qt.QApplication.setGraphicsSystem(style)
     qapp = Qt.QApplication(sys.argv)
-    def send_message():
-        serverIn.post(chat_url, {"name": name, "message": message.text()})
-        message.clear()
-    def server():
-        # Here we define the UDP IP address as well as the port number that we have
-        # already defined in the client python script.
-        UDP_IP_ADDRESS = "127.0.0.1"
-        UDP_PORT_IN = 52001
-        serverIn = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        serverIn.connect(('localhost', UDP_PORT_IN))
-
-        return serverIn
-    
-    serverIn = server()
-
     tb = top_block_cls()
     tb.start()
     tb.show()
