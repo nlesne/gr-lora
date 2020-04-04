@@ -42,10 +42,11 @@ from time import sleep
 import time
 from gnuradio import qtgui
 
-global text_area
+text_area = None
 class top_block(gr.top_block, Qt.QWidget):
 
     def __init__(self):
+        global text_area
         gr.top_block.__init__(self, "Top Block")
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Top Block")
