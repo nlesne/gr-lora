@@ -36,6 +36,8 @@ import sys
 import time
 import socket
 from gnuradio import qtgui
+from textwrap import wrap
+
 def server():
     # Here we define the UDP IP address as well as the port number that we have
     # already defined in the client python script.
@@ -160,10 +162,22 @@ class top_block(gr.top_block, Qt.QWidget):
         messageBox = QLineEdit()
         self.top_layout.addWidget(messageBox)
         button = QPushButton('Send Message')
-        def on_click():
+        def on_click(self):
             message = messageBox.text()
-            messageToSend = message.encode()
-            serverIn.send(messageToSend)
+            new = wrap(message,3)
+            chunks = [message[i:i+3] for i in range(0, len(message), 3)]
+            allCharactere = ""
+            for part in chunks:
+                if len(part) == 1:
+                    allCharactere = allCharactere + part + '\0'
+                if len(part) == 2:
+                    allCharactere =  allCharactere + part + '\0'
+                if len(part) == 3:
+                    allCharactere =  allCharactere + part
+            message_to_send = (allCharactere + '\n').encode()
+            serverIn.send(message_to_send)
+            if len(allCharactere)%3 == 0:
+                serverIn.send(('\0'+'\0'+'\n').encode())
             messageBox.setText("")
         button.clicked.connect(on_click)
         self.top_layout.addWidget(button)
